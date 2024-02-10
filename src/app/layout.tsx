@@ -4,6 +4,8 @@ import "./globals.css"
 import { cn } from "@/lib/utils"
 import { ThemeProvider } from "./providers/ThemeProvider"
 import Header from "@/components/layout/Header"
+import CartProvider from "./providers/CartProvider"
+import ShoppingCartSidebar from "@/components/ShoppingCartSidebar"
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -35,8 +37,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          {children}
+          <CartProvider>
+            <Header />
+            <ShoppingCartSidebar />
+            {children}
+          </CartProvider>
         </ThemeProvider>
       </body>
     </html>
