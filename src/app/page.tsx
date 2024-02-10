@@ -1,5 +1,5 @@
-import Image from "next/image"
+import MaxWidthWrapper from "@/components/layout/MaxWidthWrapper"
 
 export default function Home() {
-  return <div>Page</div>
+  return <MaxWidthWrapper>Page</MaxWidthWrapper>
 }
