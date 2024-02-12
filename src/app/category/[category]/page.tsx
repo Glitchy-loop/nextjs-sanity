@@ -34,7 +34,7 @@ export default async function CategoryPage({
           <h2 className="text-2xl text-semibold">Product Reel</h2>
           <p className="text-sm pb-4">Check out our latest products!</p>
         </div>
-        <Link href="/Men">
+        <Link href={`/category/${params.category}`}>
           <Button variant="link">View all</Button>
         </Link>
       </div>

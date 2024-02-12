@@ -12,8 +12,8 @@ export default function CartProvider({
       mode="payment"
       cartMode="client-only"
       stripe={process.env.NEXT_PUBLIC_STRIPE_KEY!}
-      successUrl={`${process.env.NEXTAUTH_URL}/success`}
-      cancelUrl={`${process.env.NEXTAUTH_URL}/cancel`}
+      successUrl={`${process.env.NEXT_PUBLIC_WEB_URL}/success`}
+      cancelUrl={`${process.env.NEXT_PUBLIC_WEB_URL}/cancel`}
       currency="EUR"
       billingAddressCollection={true}
       shouldPersist={true}

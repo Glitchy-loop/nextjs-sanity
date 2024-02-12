@@ -14,11 +14,6 @@ export default {
       type: 'string',
     },
     {
-      name: 'image',
-      title: 'Image',
-      type: 'url',
-    },
-    {
       // this is only if you use credentials provider
       name: 'password',
       type: 'string',

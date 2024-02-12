@@ -9,7 +9,7 @@ import React from "react"
 const DesktopMenu = () => {
   const pathName = usePathname()
   return (
-    <nav className="hidden md:block flex-1">
+    <nav className="hidden md:flex justify-start flex-1">
       {navItems.map((item, index) => (
         <Link
           href={item.href}

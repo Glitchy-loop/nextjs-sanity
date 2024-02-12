@@ -1,9 +1,9 @@
-import { SignInButton, SignOutButton } from "@/components/Buttonts"
+import { SignInButton, SignOutButton } from "@/components/Buttons"
 import MaxWidthWrapper from "@/components/layout/MaxWidthWrapper"
 import { client } from "@/lib/sanity"
 import { getServerSession } from "next-auth"
 import SignUpForm from "@/components/forms/SignUpForm"
-import { authOptions } from "../api/auth/[...nextauth]/route"
+import { authOptions } from "@/lib/authOptions"
 
 async function getData() {
   const query = `*[_type == 'product' ] {
@@ -11,7 +11,10 @@ async function getData() {
         slug,
         images
     }`
-  const data = await client.fetch(query)
+  const data = await client.fetch(query, undefined, {
+    // cache: "force-cache",
+    // next: { revalidate: 10 },
+  })
 
   return data
 }

@@ -6,6 +6,9 @@ import { ThemeProvider } from "./providers/ThemeProvider"
 import Header from "@/components/layout/Header"
 import CartProvider from "./providers/CartProvider"
 import ShoppingCartSidebar from "@/components/ShoppingCartSidebar"
+import NextAuthProvider from "./providers/NextAuthProvider"
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/lib/authOptions"
 
 export const fontSans = FontSans({
   subsets: ["latin"],
@@ -17,11 +20,14 @@ export const metadata: Metadata = {
   description: "Zyle is an ecommerce platform for selling and buying products.",
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  // Get the session from the server
+  const session = await getServerSession(authOptions)
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
@@ -37,11 +43,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <CartProvider>
-            <Header />
-            <ShoppingCartSidebar />
-            {children}
-          </CartProvider>
+          <NextAuthProvider>
+            <CartProvider>
+              <Header session={session || null} />
+              <ShoppingCartSidebar />
+              {children}
+            </CartProvider>
+          </NextAuthProvider>
         </ThemeProvider>
       </body>
     </html>

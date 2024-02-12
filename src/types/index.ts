@@ -1,3 +1,5 @@
+import { Session } from "next-auth"
+
 export interface NavItem {
   name: string
   href: string
@@ -38,4 +40,8 @@ export interface ProductCartProps {
   currency: string
   image: any
   price_id: string
+}
+
+export interface SessionProp {
+  session: Session | null
 }

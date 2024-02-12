@@ -47,7 +47,7 @@ const MobileMenu = () => {
                   key={index}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    "cursor-pointer",
+                    "cursor-pointer hover:text-primary transition-colors duration-300 ease-in-out",
                     pathName === item.href
                       ? "text-primary"
                       : "text-secondary-foreground"
