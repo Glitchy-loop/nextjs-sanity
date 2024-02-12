@@ -2,12 +2,8 @@ import AddToCartButton from "@/components/AddToCartButton"
 import ProductImageGallery from "@/components/ProductImageGallery"
 import MaxWidthWrapper from "@/components/layout/MaxWidthWrapper"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { client, urlFor } from "@/lib/sanity"
+import { client } from "@/lib/sanity"
 import { ProductPageProps } from "@/types"
-import { ChevronLeft, ChevronRight, LayoutGrid } from "lucide-react"
-import Image from "next/image"
-// import { useSearchParams } from "next/navigation"
 
 async function getData(slug: string) {
   const query = `*[_type == 'product' && slug.current == '${slug}'][0] {
@@ -35,19 +31,6 @@ export default async function ProductPage({
   return (
     <MaxWidthWrapper>
       <div className="flex flex-col md:flex-row relative">
-        {/* Product selection navigation */}
-        <div className="absolute top-5 right-0">
-          <Button variant="outline" className="p-2">
-            <ChevronLeft size={24} />
-          </Button>
-          <Button variant="outline" className="p-2">
-            <LayoutGrid size={24} />
-          </Button>
-          <Button variant="outline" className="p-2">
-            <ChevronRight size={24} />
-          </Button>
-        </div>
-
         {/* Left side of the product page */}
         <div className="w-full md:w-[50%]">
           <ProductImageGallery images={data.images} />

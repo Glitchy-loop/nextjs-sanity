@@ -15,7 +15,9 @@ async function getData() {
           'imageUrl': images[0].asset->url
         }`
 
-  const data = await client.fetch(query)
+  const data = await client.fetch(query, {
+    revalidate: 3600, // look for updates to revalidate cache every hour
+  })
   return data
 }
 
